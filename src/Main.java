@@ -11,5 +11,7 @@ public class Main {
 
         Maze maze = new Maze(sample);
         maze.printMaze();
+        System.out.println(maze.get(0,1,1));
+        System.out.println(maze.checkValidPath(0,1,1));
     }
 }

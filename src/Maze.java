@@ -26,5 +26,15 @@ public class Maze {
         }
     }
 
+    public char get(final int level, final int row, final int col){
+        final char result = maze[level][row][col];
+        return result;
+    }
+
+    public boolean checkValidPath(final int level, final int row, final int col){
+        boolean isValid = false;
+        if(this.get(level,row,col) == '.' ||  this.get(level,row,col) == '!'){isValid = true;}
+        return isValid;
+    }
 
 }
