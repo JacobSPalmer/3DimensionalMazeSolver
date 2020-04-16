@@ -8,6 +8,7 @@ public class Maze {
     private int totalCol;
     private int totalLevel;
     private boolean foundExit;
+    public int count;
 
     public Maze(final String[][] rawData) {
         maze = new char[rawData.length][rawData[0].length][rawData[0][0].length()];
@@ -60,22 +61,50 @@ public class Maze {
 
     protected boolean simpleSolveR(final int level, final int row, final int col) {
         //checks if space is valid
-        if(maze[level][row][col] == WALL || maze[level][row][col] == VISITED || maze[level][row][col] == DEADEND){
+        try {
+            if (maze[level][row][col] == WALL || maze[level][row][col] == VISITED || maze[level][row][col] == DEADEND) {
+                return false;
+            }
+            if(maze[level][row][col] != LADDER){
+                maze[level][row][col] = VISITED;
+            }
+            //Checks to see if on exit
+            if (row == (totalRow - 1) || row == 0 || col == (totalCol - 1) || col == 0) {
+                foundExit = true;
+                return true;
+            }
+            count = row;
+            //RANDOM[] = L R U D N S
+            //RANDOM[] = 1 2 3 4 5 6
+            //RANDOM[] = 3 5 2 4 1 6
+            //try directions and up or down if valid
+            if (simpleSolveR(level, row + 1, col) == true) {
+                return true;
+            }
+            if (simpleSolveR(level, row - 1, col) == true) {
+                return true;
+            }
+            if (simpleSolveR(level, row, col + 1) == true) {
+                return true;
+            }
+            if (simpleSolveR(level, row, col - 1) == true) {
+                return true;
+            }
+            if (maze[level + 1][row][col] == LADDER || maze[level - 1][row][col] == LADDER) {
+                if (simpleSolveR(level + 1, row, col) == true) {
+                    return true;
+                }
+                if (simpleSolveR(level - 1, row, col) == true) {
+                    return true;
+                }
+            }
+            if(maze[level][row][col] != LADDER){
+                maze[level][row][col] = DEADEND;
+            }
+            return false;
+        }catch(StackOverflowError e1){
+            System.out.println(count);
             return false;
         }
-        //Checks to see if on exit
-        if(row == (totalRow - 1) || row == 0 || col == (totalCol - 1) || col == 0){ return foundExit = true; }
-        //try directions and up or down if valid
-        if (simpleSolveR(level, row + 1, col)){return true;}
-        if (simpleSolveR(level, row, col + 1) == true){return true;}
-        if (simpleSolveR(level, row - 1, col) == true){return true;}
-        if (simpleSolveR(level, row, col - 1) == true){return true;}
-        if (maze[level][row][col] == LADDER ){
-            if(simpleSolveR(level + 1, row, col) == true){return true;}
-            if(simpleSolveR(level - 1, row, col) == true){return true;}
-        }
-        maze[level][row][col] = DEADEND;
-        return false;
     }
-
 }
