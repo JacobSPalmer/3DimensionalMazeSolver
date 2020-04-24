@@ -30,8 +30,8 @@ public class Main {
         }
         Maze maze = new Maze(rawInput);
         maze.printMaze();
-        System.out.println(maze.get(2,1,2));
-        System.out.println(maze.simpleSolve(startLevel,startRow,startCol));
+        System.out.println(maze.get(0,1,2));
+        System.out.println(maze.randomSolve(0,1,2));
         maze.printMaze();
     }
 }

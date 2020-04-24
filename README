@@ -1,0 +1,12 @@
+**README**
+-----------
+Halfway point!
+
+Right now, we focused on getting the 3D maze to solve itself in a "blind" fashion, meaning that we just have it solve in one routine way. This helps create a solid baseline for expanding this feature to
+solve it in a smarter way and will serve as a guide. 
+
+The input works as follows
+
+[ _Number of Columns_][_Number of Levels_][_Number of Rows_]
+
+[_Starting_]
