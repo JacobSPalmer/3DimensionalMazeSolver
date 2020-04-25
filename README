@@ -7,6 +7,6 @@ solve it in a smarter way and will serve as a guide.
 
 The input works as follows
 
-[ _Number of Columns_][_Number of Levels_][_Number of Rows_]
+[~~~~ _Number of Columns_][_Number of Levels_][_Number of Rows_]
 
 [_Starting_]

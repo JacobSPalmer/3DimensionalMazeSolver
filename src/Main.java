@@ -29,9 +29,11 @@ public class Main {
             }
         }
         Maze maze = new Maze(rawInput);
-        maze.printMaze();
+//        maze.printMaze();
         System.out.println(maze.get(startLevel,startRow,startCol));
-        System.out.println(maze.randomSolve(startLevel, startRow,startCol));
-        maze.printMaze();
+        maze.randomSolveTrial(startLevel, startRow, startCol, 1000);
+        maze.printSortedMaze();
+//        Maze.printMazeAt(maze.sortMapStep.get(54325).getKey());
+//        System.out.println(maze.mpCollect.get(maze.sortMapStep.get(54325).getKey()));
     }
 }
