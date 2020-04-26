@@ -70,6 +70,7 @@ public class Maze {
         int u = 0;
         for (final Map.Entry<char[][][], Integer> d:sortMapStep) {
             char[][][] maze = sortMapStep.get(u).getKey();
+            System.out.println("Maze #: " + u);
             for (int i1 = 0; i1 < maze.length; i1++) {
                 System.out.println("Level " + i1);
                 for (int i2 = 0; i2 < maze[0].length; i2++) {
@@ -77,6 +78,7 @@ public class Maze {
                 }
             }
             u++;
+            System.out.println();
         }
     }
 
@@ -166,19 +168,21 @@ public class Maze {
             }
             //Starts in a wall -> exit failure
             if (maze[level][row][col] == WALL) {
-//                foundExit = false;
                 System.out.println("Ouch, you started in a wall!");
-//                return foundExit;
             }
             randomSolveR(level, row, col);
             maze[level][row][col] = START;
-            char[][][] tempMaze = maze;
-            System.out.println();
-            System.out.println("Before Throw");
-            printMazeAt(tempMaze);
-            int step = stepCount(tempMaze);
-            System.out.println(step);
-            return Map.entry(tempMaze,step);
+            char[][][] temp = new char[maze.length][maze[0].length][maze[0][0].length];
+            for(int k = 0; k < totalLevel; k++){
+                for(int j = 0; j < totalRow; j++){
+                    for(int i = 0; i < totalCol; i++){
+                        temp[k][j][i] = maze[k][j][i];
+                    }
+                }
+            }
+            int step = stepCount(temp);
+//            System.out.println(step);
+            return Map.entry(temp,step);
 //            return foundExit;
 //            tempCount = count;
 //            mpCollect.put(maze.clone(), tempCount);
@@ -210,14 +214,14 @@ public class Maze {
         Map<char[][][], Integer> mapSet = new HashMap<>();
         for(int d = 0; d < SampleSize; d++){
             Map.Entry<char[][][], Integer> temp = randomSolve(level,row,col);
-            System.out.println("After Throw/Before Input");
-            printMazeAt(temp.getKey());
+//            System.out.println("After Throw/Before Input");
+//            printMazeAt(temp.getKey());
             sortMapStep.add(d, temp);
-            System.out.println("After Input");
-            printMazeAt(sortMapStep.get(d).getKey());
+//            System.out.println("After Input");
+//            printMazeAt(sortMapStep.get(d).getKey());
         }
-//        Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
-//        sortMapStep.sort(c);
+        Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
+        sortMapStep.sort(c);
     }
 
     protected boolean randomSolveR(final int level, final int row, final int col) {
