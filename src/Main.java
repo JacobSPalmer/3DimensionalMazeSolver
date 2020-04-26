@@ -29,11 +29,22 @@ public class Main {
             }
         }
         Maze maze = new Maze(rawInput);
-//        maze.printMaze();
-        System.out.println(maze.get(startLevel,startRow,startCol));
-        maze.randomSolveTrial(startLevel, startRow, startCol, 1000);
-        maze.printSortedMaze();
-//        Maze.printMazeAt(maze.sortMapStep.get(54325).getKey());
+//        System.out.println(maze.stepCount(maze.maze));
+        maze.printMaze();
+//        System.out.println(maze.stepCount(maze.maze));
+//        System.out.println(maze.get(startLevel,startRow,startCol));
+        maze.randomSolveTrial(startLevel, startRow, startCol, 5);
+//        maze.printSortedMaze();
+        maze.printAll();
+//        Maze.printMazeAt(maze.sortMapStep.get(maze.sortMapStep.size() - 1).getKey());
+//        Maze.printMazeAt(maze.sortMapStep.get(0).getKey());
+//        System.out.println(maze.sortMapStep.get(0).getValue());
+//        Maze.printMazeAt(maze.sortMapStep.get(1).getKey());
+//        System.out.println(maze.sortMapStep.get(1).getValue());
+//        Maze.printMazeAt(maze.sortMapStep.get(2).getKey());
+//        System.out.println(maze.sortMapStep.get(2).getValue());
+//        Maze.printMazeAt(maze.sortMapStep.get(3).getKey());
+//        System.out.println(maze.sortMapStep.get(3).getValue());
 //        System.out.println(maze.mpCollect.get(maze.sortMapStep.get(54325).getKey()));
     }
 }
