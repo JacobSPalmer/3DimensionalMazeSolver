@@ -15,7 +15,8 @@ of the mazes!On top of this, the program also includes a GUI interface that can 
 from the program itself (meaning no console commands!).The aim in including this is to expand the user 
 base potential of the program by taking the complications of hardcoding instructions out and allowing the
 user to simply run the program. The GUI utilizes the Random Best Solve methodology but takes the same inputs 
-that the main method does as well! _Read the following portions carefully in order to use the program correctly!_
+that the main method does as well! The implementation of this program uses a variety of structures: primarily multi-dimensional
+arrays and also various Lists throughout the program! _Read the following portions carefully in order to use the program correctly!_
 
 **Instructions:**\
 This program can be run in a variety of ways!
@@ -54,7 +55,8 @@ The PC this was tested on could run 10,000 different versions of the Medium maze
 \
 **Using the GUI:**\
 The GUI is meant to be easier to run than going from the program! This GUI utilizes the same methodolgy of the Random Best Solve!
-To run this, simply run the 3DMazeSolver.jar. Paste a maze (omitting the dashes) that looks like the maze below:
+To run this, simply run the 3DMazeSolver.jar.
+Paste a maze (omitting the dashes) that looks like the maze below:
 
 `**********`\
 ` *.******..`\
@@ -79,7 +81,9 @@ To run this, simply run the 3DMazeSolver.jar. Paste a maze (omitting the dashes)
  `*......!**`\
  `**********`\
 \
-Then enter the same numbers you would at the top of the maze text file and click run! 
+Then enter the same numbers you would at the top of the maze text file and click run! The GUI view of the maze can be distorted due to 
+how the text box displays character spaces. If you want a better view of the Maze, solved or unsolved, 
+paste it into a text file open in IntelliJ to see it evenly spaced!
 \
 \
 **Disclaimers:**\

@@ -10,7 +10,6 @@ public class Maze {
     private boolean foundExit;
     public List<String> direction = Arrays.asList("north", "south", "east", "west", "up", "down");
     public List<Map.Entry<char[][][], Integer>> sortMapStep;
-    private final char[][][] mazeCopy;
     private final String[][] rData;
 
     public Maze(final String[][] rawData) {
@@ -25,22 +24,16 @@ public class Maze {
             totalRow = maze[0].length;
             totalCol = maze[0][0].length;
         }
-        mazeCopy = maze.clone();
     }
+
+    /**Print Functions!
+     * Multiple were used for testing as well as dealing with the more complex printing methods used for implementing with a GUI!**/
 
     public void printMaze() {
         for (int i1 = 0; i1 < maze.length; i1++) {
             System.out.println("Level " + i1);
             for (int i2 = 0; i2 < maze[0].length; i2++) {
                 System.out.println(maze[i1][i2]);
-            }
-        }
-    }
-
-    public void resetMaze() {
-        for (int i1 = 0; i1 < rData.length; i1++) {
-            for (int i2 = 0; i2 < rData[0].length; i2++) {
-                maze[i1][i2] = rData[i1][i2].toCharArray();
             }
         }
     }
@@ -115,6 +108,8 @@ public class Maze {
         return result;
     }
 
+    /**Helper and Test Functions!**/
+
     public char get(final int level, final int row, final int col) {
         final char result = maze[level][row][col];
         return result;
@@ -127,6 +122,30 @@ public class Maze {
         }
         return isValid;
     }
+
+    public void resetMaze() {
+        for (int i1 = 0; i1 < rData.length; i1++) {
+            for (int i2 = 0; i2 < rData[0].length; i2++) {
+                maze[i1][i2] = rData[i1][i2].toCharArray();
+            }
+        }
+    }
+
+    public int stepCount(final char[][][] path){
+        int count = 0;
+        for(int l = 0; l < totalLevel; l++){
+            for(int r = 0; r < totalRow; r++){
+                for(int c = 0; c < totalCol; c++){
+                    if(path[l][r][c] == '+' || path[l][r][c] == '-'){
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    /** Simple Solve Portion!**/
 
     public boolean simpleSolve(final int level, final int row, final int col) throws IllegalArgumentException {
         //Checks for valid entry given maze data
@@ -191,6 +210,20 @@ public class Maze {
         }
     }
 
+    /** Random Solve Portion!**/
+
+    public void randomSolveTrial(final int level, final int row, final int col, int SampleSize){
+        sortMapStep = new ArrayList<>();
+        Map<char[][][], Integer> mapSet = new HashMap<>();
+        for(int d = 0; d < SampleSize; d++){
+            Map.Entry<char[][][], Integer> temp = randomSolve(level,row,col);
+            sortMapStep.add(d, temp);
+        }
+        Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
+        sortMapStep.sort(c);
+        printSortedMaze();
+    }
+
     public Map.Entry<char[][][],Integer> randomSolve(final int level, final int row, final int col) {
             resetMaze();
             if (level > totalLevel || level < 0 || row < 0 || row > totalRow - 1 || col < 0 || col > totalCol - 1) {
@@ -212,32 +245,6 @@ public class Maze {
             }
             int step = stepCount(temp);
             return Map.entry(temp,step);
-    }
-
-    public int stepCount(final char[][][] path){
-        int count = 0;
-        for(int l = 0; l < totalLevel; l++){
-            for(int r = 0; r < totalRow; r++){
-                for(int c = 0; c < totalCol; c++){
-                    if(path[l][r][c] == '+' || path[l][r][c] == '-'){
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
-    }
-
-    public void randomSolveTrial(final int level, final int row, final int col, int SampleSize){
-        sortMapStep = new ArrayList<>();
-        Map<char[][][], Integer> mapSet = new HashMap<>();
-        for(int d = 0; d < SampleSize; d++){
-            Map.Entry<char[][][], Integer> temp = randomSolve(level,row,col);
-            sortMapStep.add(d, temp);
-        }
-        Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
-        sortMapStep.sort(c);
-        printSortedMaze();
     }
 
     protected boolean randomSolveR(final int level, final int row, final int col) {

@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        /** This portion of the code reads in from the input file! Please specify the input file through a run configuration**/
+        /** This portion of the code reads in from the input file! Please specify the input file through a run configuration!**/
         final Scanner input = new Scanner(System.in);
         final int totalLevels = input.nextInt();
         final int totalRows = input.nextInt();
