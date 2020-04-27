@@ -82,6 +82,39 @@ public class Maze {
         }
     }
 
+    public String printMazeAsString() {
+        StringBuilder s = new StringBuilder();
+        for(int i1 = 0; i1 < maze.length; i1++) {
+            s.append("Level " + i1 + "\n");
+            for(int i2 = 0; i2 < maze[0].length; i2++) {
+                String temp = new String(maze[i1][i2]);
+                s.append(temp + "\n");
+            }
+        }
+        String result = s.toString();
+        return result;
+    }
+
+    public String printTrailStats(){
+        String result = "Out of " + sortMapStep.size() + " trials, this map took " + sortMapStep.get(0).getValue() + " and the longest took " + sortMapStep.get(sortMapStep.size() - 1).getValue();
+        return result;
+    }
+
+    public String printStringAsSortedMaze() {
+        StringBuilder s = new StringBuilder();
+        char[][][] sortedMaze = sortMapStep.get(0).getKey();
+        int shortedCount = sortMapStep.get(0).getValue();
+        for (int i1 = 0; i1 < sortedMaze.length; i1++) {
+            s.append("Level " + i1 + "\n");
+            for (int i2 = 0; i2 < sortedMaze[0].length; i2++) {
+                String temp = new String(sortedMaze[i1][i2]);
+                s.append(temp + "\n");
+            }
+        }
+        String result = s.toString();
+        return result;
+    }
+
     public char get(final int level, final int row, final int col) {
         final char result = maze[level][row][col];
         return result;
@@ -159,10 +192,6 @@ public class Maze {
 
     public Map.Entry<char[][][],Integer> randomSolve(final int level, final int row, final int col) {
             resetMaze();
-//        mpCollect = new HashMap<>();
-//        char[][][] temp;
-//        Integer tempCount;
-//        while(sampleSize > 0) {
             if (level > totalLevel || level < 0 || row < 0 || row > totalRow - 1 || col < 0 || col > totalCol - 1) {
                 throw new IllegalArgumentException("Starting point is out of bounds");
             }
@@ -181,17 +210,7 @@ public class Maze {
                 }
             }
             int step = stepCount(temp);
-//            System.out.println(step);
             return Map.entry(temp,step);
-//            return foundExit;
-//            tempCount = count;
-//            mpCollect.put(maze.clone(), tempCount);
-//            sampleSize--;
-//        }
-//        sortMapStep = new ArrayList<>();
-//        sortMapStep.addAll(mpCollect.entrySet());
-//        Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
-//        Collections.sort(sortMapStep, c);
     }
 
     public int stepCount(final char[][][] path){
@@ -210,15 +229,10 @@ public class Maze {
 
     public void randomSolveTrial(final int level, final int row, final int col, int SampleSize){
         sortMapStep = new ArrayList<>();
-//        Map<char[][][], Integer>
         Map<char[][][], Integer> mapSet = new HashMap<>();
         for(int d = 0; d < SampleSize; d++){
             Map.Entry<char[][][], Integer> temp = randomSolve(level,row,col);
-//            System.out.println("After Throw/Before Input");
-//            printMazeAt(temp.getKey());
             sortMapStep.add(d, temp);
-//            System.out.println("After Input");
-//            printMazeAt(sortMapStep.get(d).getKey());
         }
         Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
         sortMapStep.sort(c);
