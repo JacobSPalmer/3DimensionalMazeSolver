@@ -4,24 +4,27 @@
 
 **Overview:**\
 In this project, we focused on creating two ways to solve a three-dimensional character array!
-One way was using a hardcoded "simple solve." This method simply takes input instructions of row, col, and level of starting point
-and utilizes a hardcoded step path to solve the maze!
+One way was using a hardcoded "simple solve." This method simply takes input instructions of row, 
+col, and level of starting point and utilizes a hardcoded step path to solve the maze!
 The second method used is the focus of the project, a randomized step path! This path constantly changes
-the direction in which its taking. On top of this, the goal was to create the most efficient path forward. Based on this
-we created a system in which the user can specify the amount of trials to run. The random solver will then solve the maze x
-amount of times and log the steps it took to achieve the exit. This is processed and then the map that solved the maze
-with the least amount of steps is produced along with the max step count taken of the mazes!
-On top of this, the program also includes a GUI interface that can be run completely separately from the program itself (meaning no console commands!).
-The aim in including this is to expand the user base potential of the program by taking the complications of hardcoding instructions out and allowing the
-user to simply run the program. The GUI utilizes the Random Best Solve methodology but takes the same inputs that the main method does as well! _Read the following portions carefully in order to use the program correctly!_
+the direction in which its taking. On top of this, the goal was to create the most efficient path forward. 
+Based on this we created a system in which the user can specify the amount of trials to run. The random solver 
+will then solve the maze x amount of times and log the steps it took to achieve the exit. This is processed and 
+then the map that solved the maze with the least amount of steps is produced along with the max step count taken 
+of the mazes!On top of this, the program also includes a GUI interface that can be run completely separately 
+from the program itself (meaning no console commands!).The aim in including this is to expand the user 
+base potential of the program by taking the complications of hardcoding instructions out and allowing the
+user to simply run the program. The GUI utilizes the Random Best Solve methodology but takes the same inputs 
+that the main method does as well! _Read the following portions carefully in order to use the program correctly!_
 
 **Instructions:**\
 This program can be run in a variety of ways!
 \
 \
 _Creating a Map:_\
-The map uses a variety of characters to make the maze more complicated! To make your own map, decide how many layers, rows, and columns you'd like to have!
-The maze must be even (meaning every floor must have the same rows and cols and all rows must be the same length!) Create an input text file, place in parent folder to the actual code!
+The map uses a variety of characters to make the maze more complicated! To make your own map, decide how many layers, 
+rows, and columns you'd like to have! The maze must be even (meaning every floor must have the same rows and cols 
+and all rows must be the same length!) Create an input text file, place in parent folder to the actual code!
 The format of the file should be exactly as follows:
 \
 \
@@ -44,7 +47,8 @@ Trampoline -> # (these spaces allow you to move up a floor! beware, there must b
 Trapdoor -> ! (these spaces allow you to fall down a level! same as a trampoline, you must have a valid path below it or what's the point!)\
 \
 \
-Two Sample Mazes are included in the OG file! A medium maze and a small maze! You can build an endless diversity of mazes but keep in mind that its processing thousands of moves a second with the random solver so more complexity = more time/more work for computer!
+Two Sample Mazes are included in the OG file! A medium maze and a small maze! You can build an endless diversity of mazes 
+but keep in mind that its processing thousands of moves a second with the random solver so more complexity = more time/more work for computer!
 The PC this was tested on could run 10,000 different versions of the Medium maze in about 2 seconds, so it is relatively fast, but it depends on your computer processing speed!
 \
 \
@@ -79,9 +83,13 @@ Then enter the same numbers you would at the top of the maze text file and click
 \
 \
 **Disclaimers:**\
-The maze must be built out of these and in the exact layout as above! If you using the GUI, you do not need to include the series of dashes to signify floor breaks!
- Just stack the levels on top of each other! Another thing to keep in mind is that the maze starting position uses Array logic (meaning if you wanna start at  1, 2,  2, you would put in 0, 1, 1) 
- The maze dimensions are just as normal (if you wanna build a 3 x 7 x 10 maze, you enter 3 7 10)\
- \
- Also the maze **MUST BE SOLVABLE** aka there must be an exit! This is more complex than just a normal maze solver, the goal here is to find the best way out *when there is a way out*! This is due to the recursive nature of the program and therefore if it cannot find an exit, it cannot stop!
- It will literally keep going forever! That's not very nice to your computer or the maze :( so if your not getting any output, but the program is still running, make sure that the maze is set up correctly.
+The maze must be built out of these and in the exact layout as above! If you using the GUI, you do not need to 
+include the series of dashes to signify floor breaks! Just stack the levels on top of each other! Another thing to keep in mind is 
+that the maze starting position uses Array logic (meaning if you wanna start at  1, 2,  2, you would put in 0, 1, 1).
+The maze dimensions are just as normal (if you wanna build a 3 x 7 x 10 maze, you enter 3 7 10)\
+\
+Also the maze **MUST BE SOLVABLE** aka there must be an exit! This is more complex than just a normal maze solver, 
+the goal here is to find the best way out *when there is a way out*! This is due to the recursive nature of the program 
+and therefore if it cannot find an exit, it cannot stop! It will literally keep going forever! That's not very 
+nice to your computer or the maze :( so if your not getting any output, but the program is still running, make 
+sure that the maze is set up correctly.
