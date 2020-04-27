@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args){
 
-
+        /** This portion of the code reads in from the input file! Please specify the input file through a run configuration**/
         final Scanner input = new Scanner(System.in);
         final int totalLevels = input.nextInt();
         final int totalRows = input.nextInt();
@@ -29,10 +29,12 @@ public class Main {
             }
         }
         Maze maze = new Maze(rawInput);
-
         maze.printMaze();
-        maze.randomSolveTrial(startLevel, startRow, startCol, 10000);
-        System.out.println();
-        maze.printSortedMaze();
+        System.out.println("Solved Map: \n");
+
+
+        /** Here is where you can decide the trail limit or run the simple solve!**/
+//        maze.simpleSolve(startLevel,startRow,startCol);
+        maze.randomSolveTrial(startLevel,startRow,startCol,1000);
     }
 }

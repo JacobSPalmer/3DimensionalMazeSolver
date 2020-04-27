@@ -141,10 +141,11 @@ public class Maze {
         }
         simpleSolveR(level, row, col);
         maze[level][row][col] = START;
+        printMaze();
         return foundExit;
     }
 
-    protected boolean simpleSolveR(final int level, final int row, final int col) {
+    private boolean simpleSolveR(final int level, final int row, final int col) {
         //checks if space is valid
         try {
             if (maze[level][row][col] == WALL || maze[level][row][col] == VISITED || maze[level][row][col] == DEADEND) {
@@ -236,6 +237,7 @@ public class Maze {
         }
         Comparator<Map.Entry<char[][][], Integer>> c = new DescendingStep();
         sortMapStep.sort(c);
+        printSortedMaze();
     }
 
     protected boolean randomSolveR(final int level, final int row, final int col) {
