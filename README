@@ -97,3 +97,6 @@ the goal here is to find the best way out *when there is a way out*! This is due
 and therefore if it cannot find an exit, it cannot stop! It will literally keep going forever! That's not very 
 nice to your computer or the maze :( so if your not getting any output, but the program is still running, make 
 sure that the maze is set up correctly.
+\
+\
+Google Slides Link: https://docs.google.com/presentation/d/1VM4q3PGB7Oc7kb_9-TmZbg4dyIu0Tq8-kXLslvMrbi8/edit
